@@ -5,4 +5,17 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 
+<hr>
+<div class="row col-xs-8 col-xs-offset-2">
+  <% if (userData) { %>
+    <!-- If we don't stringify the data, we'll just see [object Object] - see Further Study section -->
+    <%= JSON.stringify(userData) %>
+  <% } else { %>
+    <h3 class="text-center text-info">
+      Submit a GitHub username!
+    </h3>
+  <% } %>
+</div>
+
+
 <%- include('./partials/footer') %>

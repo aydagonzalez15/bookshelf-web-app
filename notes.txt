@@ -10,3 +10,6 @@ OAuth
   Step 8: Configure Passport
   Step 9: Define routes for authentication
   Step 10: Add Login/Logout UI
+
+  Your S3 access key: bl3sVIdW5rkhWBet
+Your S3 secret key: 8XrXouNjX7P2ec7N
