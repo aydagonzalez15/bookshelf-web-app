@@ -5,51 +5,17 @@ var router = express.Router();
 const passport = require('passport');
 
 
-//uncomment below if you dont have fetch in node
-// const fetch = require('node-fetch')
-
-
-const token = process.env.GOOGLE_KEY
-const ROOT_URL = 'https://www.googleapis.com/';
-
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Bookshelf' });
-// });
-
-router.get('/', function(req, res, next) {
-const options = {
-  headers: {
-    Authorization: `token ${token}`
-  }
-
-}
-fetch(`${ROOT_URL}books/v1/volumes?q=flowers+inauthor:keyes&${token}`, options)
-.then(res => res.json())
-.then(userData => {
-  res.render('index', {userData, title: 'Bookshelf'} );
-})
-
-});
-
-
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Bookshelf' });
 });
 
+
 // Google OAuth login route
-router.get('/auth/google', passport.authenticate(
-  // Which passport strategy is being used?
+router.get('/auth/google', passport.authenticate(// Which passport strategy is being used?
   'google',
-  {
-    // Requesting the user's profile and email
-    scope: ['profile', 'email'],
-    // Optionally force pick account every time
-    // prompt: "select_account"
+  {// Requesting the user's profile and email
+    scope: ['profile', 'email'],  // prompt: "select_account"
   }
 ));
 

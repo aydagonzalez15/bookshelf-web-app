@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<h2> <%= title %></h2>
+<form class="new-flight-add" action="/books" method="POST">
+    <label >Title:
+        <input name="title">
+
+    </label><br>
+    <label >Authors:
+        <input name="authors" type="text">
+    </label><br>
+    <label> Genre:
+        <input name="genre" type="text">
+    </label><br>
+    <label>Published Year:
+        <input name="publishYear" type="text" value="" >
+    </label><br>
+    <button type="submit">Add Book</button>
+
+</form>
+
+
+<%- include('../partials/footer') %>

@@ -5,17 +5,5 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 
-<hr>
-<div class="row col-xs-8 col-xs-offset-2">
-  <% if (userData) { %>
-    <img src="<%= userData.items[9].volumeInfo.imageLinks.thumbnail%>" class="img-circle" width="100">
-
-  <% } else { %>
-    <h3 class="text-center text-info">
-      Submit a GitHub username!
-    </h3>
-  <% } %>
-</div>
-
 
 <%- include('./partials/footer') %>

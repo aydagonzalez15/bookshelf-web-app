@@ -8,8 +8,14 @@ const userSchema = new Schema({
       required: true
     },
     email: String,
-    avatar: String
+    thumbnail: String,
+    book: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Book'
+    }]
   }, {
     timestamps: true
   });
   
+
+// Add refernce to book Schema

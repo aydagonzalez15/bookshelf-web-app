@@ -13,3 +13,31 @@ OAuth
 
   Your S3 access key: bl3sVIdW5rkhWBet
 Your S3 secret key: 8XrXouNjX7P2ec7N
+
+RENDERS BOOKS
+<div class="row col-xs-8 col-xs-offset-2">
+    <% if (userData) { %>
+      <% userData.items.forEach(function(book) { %>
+        <% if (book.volumeInfo.imageLinks.thumbnail) { %>
+          <div class="col-xs-4">
+            <img src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="img-circle" width="100">
+            <p><%= book.volumeInfo.title %></p>
+            <p><%= book.volumeInfo.authors %></p>
+            
+            <form action="" method="GET">
+                <button>SAVE</button>
+            </form>
+            <br>
+
+
+            <!-- <p> <a href="<%= book.volumeInfo.previewLink %> ">Link </a></p> -->
+          </div>
+        <% } %>
+      <% }); %>
+    <% } else { %>
+      <h3 class="text-center text-info">
+        No book covers found!
+      </h3>
+
+    <% } %>
+  </div>
