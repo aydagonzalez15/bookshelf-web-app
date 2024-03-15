@@ -10,15 +10,13 @@ const passport = require('passport');
 
 
 const token = process.env.GOOGLE_KEY
-const ROOT_URL = 'https://books.google.com/';
+const ROOT_URL = 'https://www.googleapis.com/';
 
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Bookshelf' });
 // });
-
-
 
 router.get('/', function(req, res, next) {
 const options = {
@@ -27,7 +25,7 @@ const options = {
   }
 
 }
-fetch(`https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&${token}`, options)
+fetch(`${ROOT_URL}books/v1/volumes?q=flowers+inauthor:keyes&${token}`, options)
 .then(res => res.json())
 .then(userData => {
   res.render('index', {userData, title: 'Bookshelf'} );
