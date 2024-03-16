@@ -11,16 +11,18 @@
             <img name="thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="img-circle" width="100">
             <p name="title"><%= book.volumeInfo.title %></p>
             <p name="authors"><%= book.volumeInfo.authors %></p>
+            <p name="description"> <%book.volumeInfo.description%> </p>
+            <p name="description"> <%book.volumeInfo.categories%> </p>
             
             <form action="/books" method="POST">
                 <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
                 <input type="text" hidden name="authors" value="<%= book.volumeInfo.authors %>">
-                <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.thumbnail %>">
+                <input type="text" hidden name="thumbnail" value="<%=book.volumeInfo.imageLinks.thumbnail %>">
+                <input type="text" hidden name="description" value="<%=book.volumeInfo.description %>">
+                <input type="text" hidden name="categories" value="<%=book.volumeInfo.categories %>">
                 <button>SAVE</button>
             </form>
             <br>
-
-
             <!-- <p> <a href="<%= book.volumeInfo.previewLink %> ">Link </a></p> -->
           </div>
         <% } %>
@@ -29,9 +31,9 @@
       <h3 class="text-center text-info">
         No book covers !
       </h3>
-
     <% } %>
   </div>
+
 
 <%- include('../partials/footer') %>
 

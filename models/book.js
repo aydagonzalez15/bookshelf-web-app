@@ -16,8 +16,8 @@ const bookSchema = new Schema({
     genre: {
         type: String,
     },
-    publishYear: {
-        type: Number
+    publishDate: {
+        type: String
     },
     thumbnail: {
         type: String
@@ -25,7 +25,12 @@ const bookSchema = new Schema({
     user: [{
         type: Schema.Types.ObjectId,
         ref: 'user'
-    }]
+    }],
+    comments: String,
+
+    description: String,
+    categories: String
+
     // Add user ref
 
 },

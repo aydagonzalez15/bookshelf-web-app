@@ -1,5 +1,20 @@
 <%- include('../partials/header') %>
+
 <h1><%= title %></h1>
-ELLO USERS
+
+<section class="container">
+<div id="show-index-book-page">
+
+    <% books.forEach(function(b){ %>
+        <a href="/books/<%=b._id%>">
+        <img src="<%= b.thumbnail %>" > 
+        </a>
+        <%= b.title %>
+        By <%= b.authors %>
+
+    <%})%>
+
+</div>
+</section>
 
 <%- include('../partials/footer') %>

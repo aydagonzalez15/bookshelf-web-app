@@ -18,3 +18,13 @@ a {
   height: 30px;
 }
 
+.checked {
+  color: orange;
+}
+
+div {
+  display: flex;
+  /* flex-direction: column; */
+  flex-direction: row;
+  /* display: grid; */
+}

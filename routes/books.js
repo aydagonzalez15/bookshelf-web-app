@@ -4,21 +4,15 @@ var booksCtrl = require('../controllers/books')
 
 
 
-//all paths start with books
+//GET	/posts/:id	Read a specific post	show	for more details about the books
+router.get('/:id', booksCtrl.show)
 
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.render('');
-// });
-
-
-// GET	/posts/new	Return view (form) to add a new post	new
-router.get('/new', booksCtrl.new);
-
-//POST	/posts	Create a new post	create	
+//POST	/posts	Create a new post	create	Yes
 router.post('/', booksCtrl.create)
 
-router.get('/', booksCtrl.show)
+
+// GET	/posts	Read all posts	index	to show all books in book/index pg
+router.get('/', booksCtrl.index)
 
 
 

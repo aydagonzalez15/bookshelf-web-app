@@ -41,3 +41,26 @@ RENDERS BOOKS
 
     <% } %>
   </div>
+
+
+
+
+
+
+    
+async function create(req, res) {
+    try {
+    console.log("LOOK HERE ALSo:", req.body)
+        const book = await Book.create(req.body)
+        book.title= req.body.title
+        book.authors= req.body.authors
+        book.thumbnail= req.body.thumbnail
+        book.save()
+
+    console.log("LOOK HERE:", book)
+        res.redirect('books/');
+    } catch (error) {
+        console.error("Error saving , try Again Ayda:", error);
+        // res.status(500).send("Internal Server Error");
+    }
+};
