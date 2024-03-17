@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+
+<br> <br>
+
+<form action="/comments/<%= commentId%>?_method=PUT" method="POST" autocomplete="off">
+    <input name="content"></input>
+    <button type="submit">Edit Comment</button>
+</form>
+
+
+<%- include('../partials/footer') %>

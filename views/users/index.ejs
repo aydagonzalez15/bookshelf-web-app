@@ -10,9 +10,14 @@
         <div class="saved-book-item"> <a href="/books/<%=b._id%>"><img src="<%= b.thumbnail %>" > </a>  </div>
         <div class="saved-book-item"> <%= b.title %> </div>
         <div class="saved-book-item"> By <%= b.authors %> </div>
+        <div><
+        <form action="/books/<%= b._id %>?_method=DELETE" method="POST">
+            <button type="Submit"> DELETE</button>
+        </form>  </div>
+
+
 
     <%})%>
-
 
 </section>
 </main>

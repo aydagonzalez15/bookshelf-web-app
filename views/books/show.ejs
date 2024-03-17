@@ -45,7 +45,23 @@ WHAT DO YOU THINK?
         <tr>
           <td><%= c.createdAt.toLocaleDateString() %></td>
           <td><%= c.content %></td>
-          <td> <a href="/comments/<%= c._id %>/edit"> Edit Comment</a></td>
+
+          <td> 
+            <a href="/comments/<%= c._id %>/edit"> Edit Comment</a>
+            
+            <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+              <textarea name="content"></textarea>
+              <button type="Submit"> EDIT</button>
+              </form> 
+          </td>
+          <td>           
+            <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+            <button type="Submit"> DELETE</button>
+            </form>  
+      </td>
+
+      PUT	/comments/:id	Update specified comment	"Shallow" route / Needs payload
+
 
 
         </tr>

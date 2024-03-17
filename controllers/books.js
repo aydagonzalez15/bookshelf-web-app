@@ -1,12 +1,24 @@
 const Book = require('../models/book')
 const token = process.env.GOOGLE_KEY
 const ROOT_URL = 'https://www.googleapis.com/';
+const category = 'comedy'; // Specify the category you want to search for
 
 
 module.exports = {
   index,
   create,
-  show
+  show,
+  delete: deleteBook
+}
+
+async function deleteBook(req, res) {
+  const book = await Book.findOne({ '_id': req.params.id})
+  if (!book) return res.redirect('/books')
+  await Book.deleteOne({ '_id': req.params.id });
+  // Save the updated movie doc
+  // Redirect back to the movie's show view
+  res.redirect(`/users`);
+
 }
 
     
@@ -43,7 +55,7 @@ function index(req, res, next) {
       Authorization: `token ${token}`
     }
   };
-  const category = 'fiction'; // Specify the category you want to search for
+
   fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
     .then(res => res.json())
     .then(userData => {
