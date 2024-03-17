@@ -1,4 +1,4 @@
-const Book = require('../models/book')
+const {Book} = require('../models/book')
 const token = process.env.GOOGLE_KEY
 const ROOT_URL = 'https://www.googleapis.com/';
 const category = 'comedy'; // Specify the category you want to search for
@@ -32,7 +32,7 @@ async function show(req, res) {
     
 async function create(req, res) {
   try {
-  console.log("LOOK HERE ALSo:", req.body)
+  // console.log("LOOK HERE ALSo:", req.body)
       const book = await Book.create(req.body)
       book.title= req.body.title
       book.authors= req.body.authors
@@ -40,7 +40,7 @@ async function create(req, res) {
       book.description= req.body.description
       book.save()
 
-  console.log("LOOK HERE:", book)
+  // console.log("LOOK HERE:", book)
       res.redirect('users/');
   } catch (error) {
       console.error("Error saving , try Again Ayda:", error);

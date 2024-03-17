@@ -1,4 +1,5 @@
-const Book = require('../models/book')
+const {Book, Comment} = require('../models/book')
+
 
 
 module.exports = {
@@ -8,42 +9,43 @@ module.exports = {
 }
 
 async function update(req, res) {
+  console.log("ID:", req.params.id, "Body:", req.body.content);
   try {
-    const book = await Book.findOne({ 'comments._id': req.params.id });
+      // Find the book document that contains the comment with the given ID
+      const book = await Book.findOne({ 'comment._id': req.params.id });
 
-    if (!book) {
-      return res.redirect('/books');
-    }
+      console.log("BOOK LOG:", book);
 
-    // Find the index of the comment to update
-    const commentIndex = book.comments.findIndex(comment => comment._id === req.params.id);
+      // Ensure the book and its comment were found
+      if (!book) {
+          return res.status(404).send("Book not found.");
+      }
 
-    if (commentIndex === -1) {
-      return res.redirect('/books');
-    }
+      // Find the specific comment within the book
+      const comment = book.comment.find(comment => comment._id.toString() === req.params.id);
 
-    // Update the comment with the data from req.body
-    Object.assign(book.comment[commentIndex], req.body);
-
-    // Save the updated book
-    await book.save();
-
-    // Redirect back to the book's show view or wherever you intend
-    res.redirect(`/books/${book._id}`);
+      if (!comment) {
+          return res.status(404).send("Comment not found.");
+      }
+      console.log("COMMENT LOG:", comment);
+      // Update the comment's content
+      comment.content = req.body.content;
+      // Save the updated book document
+      await book.save();
+      res.redirect(`/users`);
   } catch (error) {
-    // Handle error appropriately
-    console.error(error);
-    res.status(500).send("Internal Server Error");
+      console.error(error);
+      res.status(500).send("An error occurred.");
   }
 }
+
+
 
 async function deleteComment(req, res) {
   const book = await Book.findOne({ 'comment._id': req.params.id})
   if (!book) return res.redirect('/books')
  book.comment.remove(req.params.id );
   await book.save()
-  // Save the updated movie doc
-  // Redirect back to the movie's show view
   res.redirect(`/users`);
 }
 

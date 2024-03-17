@@ -3,15 +3,16 @@
 <%- include('../partials/header') %>
 <h2>Reviews</h2>
 
+<main class="grid-container">
 <section class="comments">
 
  
-                <img src="<%= book.thumbnail %>" > 
+                <img id="grid-item1" class="grid-items book-thumbnail" src="<%= book.thumbnail %>" > 
                 </a>
-                <div><%= book.title %> </div>
-                <div><%= book.authors %> </div>
-              <div> <%= book.description %> </div>
-              <div> GENRE:<%= book.categories %> </div>
+                <div class="grid-items" ><%= book.title %> </div>
+                <div class="grid-items"><%= book.authors %> </div>
+              <!-- <div class="grid-items"> <%= book.description %> </div> -->
+              <!-- <div class="grid-items"> GENRE:<%= book.categories %> </div> -->
              
 WHAT DO YOU THINK?
 
@@ -60,8 +61,6 @@ WHAT DO YOU THINK?
             </form>  
       </td>
 
-      PUT	/comments/:id	Update specified comment	"Shallow" route / Needs payload
-
 
 
         </tr>
@@ -72,6 +71,8 @@ WHAT DO YOU THINK?
   <h5>No comments Yet</h5>
 <% } %>
 
+
+</main>
 
 
 

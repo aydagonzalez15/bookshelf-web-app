@@ -22,13 +22,6 @@ a {
   color: orange;
 }
 
-.container {
-  /* background-color: #00B7FF; */
-  display: flex;
-
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
-}
 
 .comments {
   display: grid;
@@ -43,6 +36,25 @@ a {
   grid-template-columns: 1fr;
 }
 
-.saved-book-item {
 
+.grid-container {
+  background-color: #00B7FF;
+  display: grid;
+  border-style: solid;
+  grid-template-columns: 60px 60px 60px 60px 60px;
+  /* grid-template-rows: 30px 30px; */
+  /* grid-auto-flow: row; */
+  
+}
+
+.grid-items  {  
+
+  border-style: solid;
+  /* grid-template-columns: repeat(4, 100px ); */
+}
+
+
+#grid-item1 {
+  grid-column: 1;
+  grid-row: 1 / 3;
 }

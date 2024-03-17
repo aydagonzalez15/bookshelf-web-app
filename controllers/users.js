@@ -1,4 +1,4 @@
-const Book = require('../models/book')
+const {Book} = require('../models/book')
 const User = require('../models/user')
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
 async function index (req, res) {
     const books = await Book.find({})
     // const book = await Book.find(book._Id)
-    console.log(books)
+    // console.log(books)
     res.render(`users/`, {books, title: "Saved Books" });
  }
 
