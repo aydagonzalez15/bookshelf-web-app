@@ -1,7 +1,7 @@
 const {Book} = require('../models/book')
 const token = process.env.GOOGLE_KEY
 const ROOT_URL = 'https://www.googleapis.com/';
-const category = 'comedy'; // Specify the category you want to search for
+const category = 'fiction'; // Specify the category you want to search for
 
 
 module.exports = {

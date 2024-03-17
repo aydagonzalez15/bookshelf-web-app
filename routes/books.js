@@ -15,6 +15,6 @@ router.post('/', booksCtrl.create)
 router.get('/', booksCtrl.index)
 
 //DELETE		/comments/:id	
-router.delete('/comments/:id', booksCtrl.delete)
+router.delete('/:id', booksCtrl.delete)
 
 module.exports = router;

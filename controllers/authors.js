@@ -1,4 +1,4 @@
-const Book = require('../models/book')
+const {Book} = require('../models/book')
 const token = process.env.GOOGLE_KEY
 const ROOT_URL = 'https://www.googleapis.com/';
 const author = 'jodie+picoult'; // Specify the category you want to search for
