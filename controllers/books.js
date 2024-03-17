@@ -41,7 +41,7 @@ async function create(req, res) {
       book.save()
 
   console.log("LOOK HERE:", book)
-      res.redirect('books/');
+      res.redirect('users/');
   } catch (error) {
       console.error("Error saving , try Again Ayda:", error);
       // res.status(500).send("Internal Server Error");

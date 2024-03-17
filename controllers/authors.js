@@ -1,7 +1,7 @@
 const Book = require('../models/book')
 const token = process.env.GOOGLE_KEY
 const ROOT_URL = 'https://www.googleapis.com/';
-const author = 'Stephani+Meyer'; // Specify the category you want to search for
+const author = 'jodie+picoult'; // Specify the category you want to search for
 
 
 module.exports = {
@@ -17,7 +17,7 @@ function index(req, res, next) {
       }
     };
 
-    fetch(`${ROOT_URL}books/v1/volumes?q=inauthor:${author}&${token}`, options)
+    fetch(`${ROOT_URL}books/v1/volumes?q=${author}&${token}`, options)
       .then(res => res.json())
       .then(userData => {
         res.render('books/', {userData, title : 'All books'});
