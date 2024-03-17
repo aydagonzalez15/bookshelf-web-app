@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var booksCtrl = require('../controllers/books')
 
-
+//ALL PARTH START WITH /books
 
 //GET	/posts/:id	Read a specific post	show	for more details about the books
 router.get('/:id', booksCtrl.show)

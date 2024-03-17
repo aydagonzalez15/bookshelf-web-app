@@ -1,20 +1,20 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
+<main class="container">
 
-<section class="container">
-<div id="show-index-book-page">
+<section class="saved-books-grid">
+
 
     <% books.forEach(function(b){ %>
-        <a href="/books/<%=b._id%>">
-        <img src="<%= b.thumbnail %>" > 
-        </a>
-        <%= b.title %>
-        By <%= b.authors %>
+        <div class="saved-book-item"> <a href="/books/<%=b._id%>"><img src="<%= b.thumbnail %>" > </a>  </div>
+        <div class="saved-book-item"> <%= b.title %> </div>
+        <div class="saved-book-item"> By <%= b.authors %> </div>
 
     <%})%>
 
-</div>
-</section>
 
+</section>
+</main>
 <%- include('../partials/footer') %>
+

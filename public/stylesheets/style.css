@@ -22,9 +22,27 @@ a {
   color: orange;
 }
 
-div {
+.container {
+  /* background-color: #00B7FF; */
   display: flex;
+
   /* flex-direction: column; */
-  flex-direction: row;
+  /* flex-wrap: wrap; */
+}
+
+.comments {
+  display: grid;
+  row-gap: 50px;
+
+}
+
+.saved-books-grid {
+  background-color: blueviolet;
   /* display: grid; */
+  box-sizing: border-box;
+  grid-template-columns: 1fr;
+}
+
+.saved-book-item {
+
 }

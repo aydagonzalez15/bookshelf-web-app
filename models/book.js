@@ -4,10 +4,20 @@ const Schema = mongoose.Schema;
 
 
 
+const commentSchema = new Schema({
+    content: {
+      type: String,
+      required: true
+    },
+  }, {
+    timestamps: true
+  });
+
+
 const bookSchema = new Schema({
     title: {
         type: String,
-        // required: [true, "Please enter book title"]
+        required: true
     },
     authors:{
         type: String,
@@ -26,12 +36,9 @@ const bookSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     }],
-    comments: String,
-
     description: String,
-    categories: String
-
-    // Add user ref
+    categories: String,
+    comment: [commentSchema],
 
 },
 {

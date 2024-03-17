@@ -64,3 +64,97 @@ async function create(req, res) {
         // res.status(500).send("Internal Server Error");
     }
 };
+
+
+
+
+
+
+<% if (book.comments.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Comments</th>
+        <th>Edit</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% book.comments.forEach(function(c) { %>
+        <tr>
+          <td><%= c.createdAt.toLocaleDateString() %></td>
+          <td><%= c.content %></td>
+          <td>          <a href="/comments/<%= c._id %>/edit"> Edit Comment</a></td>
+
+
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No comments Yet</h5>
+<% } %>
+
+
+
+
+
+ 
+  
+
+COMMENT CONTROLLER:
+
+
+const Book = require('../models/book')
+
+
+module.exports = {
+    create,
+    edit,
+    update
+}
+
+
+async function create(req, res) {
+  const book = await Book.findById(req.params.id)//
+  const comment = book.comments.find(comment => comment._id.equals(req.params.id))
+  res.redirect(`/books/${book._id}`)
+}
+
+
+
+
+
+async function edit(req, res) {
+  const book = await Book.find(req.params.id)
+  const comment = book.comments.find(comment => comment._id.equals(req.params.commenId))
+  res.render('books/edit', { 
+    title: 'Edit comment',
+    comment
+
+  })
+}
+
+
+async function update(req, res) {
+  const book = await Book.findById(req.params.id)
+  const comment = await Book.comments.findById(req.params.id)
+  comment.edit(req.params.id, req.body)
+  book.push(req.body);
+  
+  try {
+    // Save any changes made to the movie doc
+    await comment.save();
+  } catch (err) {
+    console.log(err);
+  }
+  // Step 5:  Respond to the Request (redirect if data has been changed)
+  res.redirect(`/books/${book._id}`)
+}
+
+
+
+
+
+

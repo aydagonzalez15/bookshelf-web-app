@@ -51,7 +51,7 @@ app.use('/', indexRouter);
 app.use('/books', booksRouter);
 
 app.use('/', usersRouter);
-app.use('/', commentsRouter);
+app.use('/', commentsRouter);  // LOOK at this, show this be path '/comments' 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
