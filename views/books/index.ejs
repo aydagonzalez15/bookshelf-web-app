@@ -1,60 +1,77 @@
-
 <%- include('../partials/header') %>
+  <h1>
+    <%= title %>
+  </h1>
+  <main class="glide container-books-index ">
+    <div class="container">
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
 
-<h1><%= title %></h1>
-<main class="container-books-index">
-<div id="book-index-carousel-1" class="carousel responsive-carousel" role="menu" data-modifyslick="" data-slick="{&quot;accessibility&quot;:false}" data-responsive-carousel="{&quot;slidesToShow&quot;: &quot;7|6&quot;, &quot;slidesToScroll&quot;: &quot;7|6&quot;, &quot;adaptiveHeight&quot;: false, &quot;infinite&quot;: false, &quot;accessibility&quot;:false}">
-  <div class="slider">
-
-<!-- <section> SECTION 1 -->
-<!-- <div class="books-index-render"> -->
-    <% if (userData) { %>
-      <% userData.items.forEach(function(book) { %>
-        <section> SECTION 1
-          <div class="controls">
-            <span class="arrow left">LEFT</span>
-           <% if (book.volumeInfo.imageLinks.thumbnail) { %>
-          <!-- <div class="col-xs-4"> -->
-            <img name="thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="img-circle" width="100">
-            <br>
-            <p name="title"><%= book.volumeInfo.title %></p>
-            <p name="authors"><%= book.volumeInfo.authors %></p>
-            <p name="description"> <%book.volumeInfo.description%> </p>
-            <p name="description"> <%book.volumeInfo.categories%> </p>
+            <% if (userData) { %> 
+              <% userData.items.forEach(function(book) { %>
             
-            <form action="/books" method="POST">
-                <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
-                <input type="text" hidden name="authors" value="<%= book.volumeInfo.authors %>">
-                <input type="text" hidden name="thumbnail" value="<%=book.volumeInfo.imageLinks.thumbnail %>">
-                <input type="text" hidden name="description" value="<%=book.volumeInfo.description %>">
-                <input type="text" hidden name="categories" value="<%=book.volumeInfo.categories %>">
-                <button>SAVE</button>
-            </form>
+                <% if (book.volumeInfo.imageLinks.thumbnail) { %>
+                  <li class="glide__slide">
+                    <div class="img-container">
+                    <img name="thumbnail" class="index-thumbnail " src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="img-circle" width="100">
+                    <br>
+                    <p name="title"><%= book.volumeInfo.title %></p>
+                    <p name="authors">by <%= book.volumeInfo.authors %></p>
+                    <p name="description"><%book.volumeInfo.description%></p>
+                    <p name="description"><%book.volumeInfo.categories%></p>
+              
+                    <form action="/books" method="POST">
+                      <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
+                      <input type="text" hidden name="authors" value="<%= book.volumeInfo.authors %>">
+                      <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
+                      <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
+                      <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
+                      <button class="btn-quick-save"> QUICK SAVE</button>
+                    </form>
+                    <br>
+                    </div>
+                  </li>
             
-            <br>
-            <!-- <p> <a href="<%= book.volumeInfo.previewLink %> ">Link </a></p> -->
-          <!-- </div> -->
-            <!-- <form action="/books/css-ctrl" method="POST"> -->
-              <span class="arrow right">RIGHT</span>
-            <!-- </form> -->
-          </div>
-        </section>
-        <% } %>
+                <% } %>
+            
+              <% }); %>
+            <% } else { %>
 
-      <% }); %>
-
-    <% } else { %>
-      <h3 class="text-center text-info">
-        No book covers !
-      </h3>
-    <% } %>
-  <!-- </div> -->
-  
-
-</div>
-</div>
-
-</main>
-<%- include('../partials/footer') %>
+              <h3 class="text-info">
+                No book covers!
+              </h3>
+            <% } %>
+            
 
 
+
+
+
+            <li class="glide__slide">5</li>
+
+
+
+
+          </ul>
+        </div>
+
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
+        </div>
+
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+      const config ={
+        type: 'carousel',
+        perView: 4
+
+      }
+      new Glide('.glide', config).mount()
+    </script>
+
+  </main>
+  <%- include('../partials/footer') %>
