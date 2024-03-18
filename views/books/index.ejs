@@ -2,15 +2,21 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
-
 <main class="container-books-index">
+<div id="book-index-carousel-1" class="carousel responsive-carousel" role="menu" data-modifyslick="" data-slick="{&quot;accessibility&quot;:false}" data-responsive-carousel="{&quot;slidesToShow&quot;: &quot;7|6&quot;, &quot;slidesToScroll&quot;: &quot;7|6&quot;, &quot;adaptiveHeight&quot;: false, &quot;infinite&quot;: false, &quot;accessibility&quot;:false}">
+  <div class="slider">
 
-<div class="row col-xs-8 col-xs-offset-2">
+<!-- <section> SECTION 1 -->
+<!-- <div class="books-index-render"> -->
     <% if (userData) { %>
       <% userData.items.forEach(function(book) { %>
-        <% if (book.volumeInfo.imageLinks.thumbnail) { %>
-          <div class="col-xs-4">
+        <section> SECTION 1
+          <div class="controls">
+            <span class="arrow left">LEFT</span>
+           <% if (book.volumeInfo.imageLinks.thumbnail) { %>
+          <!-- <div class="col-xs-4"> -->
             <img name="thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="img-circle" width="100">
+            <br>
             <p name="title"><%= book.volumeInfo.title %></p>
             <p name="authors"><%= book.volumeInfo.authors %></p>
             <p name="description"> <%book.volumeInfo.description%> </p>
@@ -24,17 +30,29 @@
                 <input type="text" hidden name="categories" value="<%=book.volumeInfo.categories %>">
                 <button>SAVE</button>
             </form>
+            
             <br>
             <!-- <p> <a href="<%= book.volumeInfo.previewLink %> ">Link </a></p> -->
+          <!-- </div> -->
+            <!-- <form action="/books/css-ctrl" method="POST"> -->
+              <span class="arrow right">RIGHT</span>
+            <!-- </form> -->
           </div>
+        </section>
         <% } %>
+
       <% }); %>
+
     <% } else { %>
       <h3 class="text-center text-info">
         No book covers !
       </h3>
     <% } %>
-  </div>
+  <!-- </div> -->
+  
+
+</div>
+</div>
 
 </main>
 <%- include('../partials/footer') %>
