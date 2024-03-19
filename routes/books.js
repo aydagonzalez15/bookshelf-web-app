@@ -11,6 +11,7 @@ router.get('/:id', booksCtrl.show)
 router.post('/', booksCtrl.create)
 
 
+
 // GET	/posts	Read all posts	index	to show all books in book/index pg
 router.get('/', booksCtrl.index)
 
@@ -18,3 +19,5 @@ router.get('/', booksCtrl.index)
 router.delete('/:id', booksCtrl.delete)
 
 module.exports = router;
+
+

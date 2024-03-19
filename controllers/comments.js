@@ -3,6 +3,7 @@ const {Book, Comment} = require('../models/book')
 
 
 module.exports = {
+  index,
     create,
     delete: deleteComment,
     update
@@ -44,7 +45,7 @@ async function update(req, res) {
 async function deleteComment(req, res) {
   const book = await Book.findOne({ 'comment._id': req.params.id})
   if (!book) return res.redirect('/books')
- book.comment.remove(req.params.id );
+  book.comment.remove(req.params.id );
   await book.save()
   res.redirect(`/users`);
 }
@@ -59,4 +60,10 @@ async function create(req, res) {
       console.log(err);
     }
     res.redirect(`/books/${book._id}`)
+}
+
+async function index(req, res) {
+  const book = await Book.findById(req.params.id)
+
+  res.render('comments/new', {book, title : 'Opinion Odes'})
 }

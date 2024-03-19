@@ -13,6 +13,7 @@ router.put('/comments/:id', commentsCtrl.update)
 
 ///to add EDIT Skill must use GET--> /skills/:id/edit
 // router.get('/comments/:id/edit', commentsCtrl.edit)
+router.get('/books/:id/comments/new', commentsCtrl.index)
 
 
 // PUT	/comments/:id	Update specified comment	"Shallow" route / Needs payload

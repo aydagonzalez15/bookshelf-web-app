@@ -15,10 +15,7 @@ async function deleteBook(req, res) {
   const book = await Book.findOne({ '_id': req.params.id})
   if (!book) return res.redirect('/books')
   await Book.deleteOne({ '_id': req.params.id });
-  // Save the updated movie doc
-  // Redirect back to the movie's show view
   res.redirect(`/users`);
-
 }
 
     
@@ -50,6 +47,9 @@ async function create(req, res) {
 
 
 function index(req, res, next) {
+  const bookTitle = req.query.title
+  console.log (`title: ${bookTitle}`)
+  const author = req.query.author
   const options = {
     headers: {
       Authorization: `token ${token}`
@@ -66,3 +66,29 @@ function index(req, res, next) {
       res.status(500).send('Error fetching books');
     });
 };
+
+
+
+// function index(req, res, next) {
+//   const bookTitle = req.query.title
+//   const authorName = req.query.authorNAme
+//   console.log (`title: ${bookTitle}`)
+//   const author = req.query.author
+//   const options = {
+//     headers: {
+//       Authorization: `token ${token}`
+//     }
+//   };
+
+//   fetch(`${ROOT_URL}books/v1/volumes?q=${bookTitle}&${token}`, options)
+//     .then(res => res.json())
+//     .then(userData => {
+//       res.render('books/', {userData, title : 'All Books in StoryVerse'});
+//     })
+//     .catch(error => {
+//       console.error('Error fetching books:', error);
+//       res.status(500).send('Error fetching books');
+//     });
+// };
+
+

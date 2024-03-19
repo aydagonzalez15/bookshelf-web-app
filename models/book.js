@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
     content: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
-  }, {
+}, {
     timestamps: true
-  });
+});
 
 
 const bookSchema = new Schema({
@@ -37,7 +37,6 @@ const bookSchema = new Schema({
     description: String,
     categories: String,
     comment: [commentSchema],
-
 },
 {
     timestamps: true

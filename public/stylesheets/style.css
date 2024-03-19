@@ -4,14 +4,31 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(59, 110, 87);
 }
 
+h1 {
+  color: rgb(33, 78, 58);
+}
 nav > a {
   /* color: #00B7FF; */
   text-decoration-line: none;
   color: white;
 }
+
+nav {
+  grid-area: nav;
+  background-color: rgb(59, 110, 87);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px 10px 30px;
+  width: 98%;
+  margin-left: -1%;
+  margin-top: 0%;
+  word-spacing: 2px;
+}
+
 
 .login {
   /* display: flex; */
@@ -35,12 +52,6 @@ nav > a {
 
 }
 
-.saved-books-grid {
-  background-color: blueviolet;
-  /* display: grid; */
-  box-sizing: border-box;
-  grid-template-columns: 1fr;
-}
 
 
 /* .grid-container {
@@ -91,16 +102,18 @@ nav > a {
 .saved-books-container {
   display: grid;
   /* grid-gap: 20px; */
-  
-  border: solid rgb(57, 134, 172);
+  border: solid rgb(59, 110, 87);
   grid-template-columns: repeat(3, 1fr);
-  grid-template-columns: auto auto auto ;
-  background-color: rgb(190, 223, 243);
+  grid-template-rows: auto auto auto ;
+  background-color: rgba(59, 110, 87, 0.5);
+  height: auto;
   /* padding: 30px; */
   padding-bottom: 100px;
   justify-items:center;
   align-items: center;
   padding-top: 5%;
+  grid-row-gap: 7%;
+  
   
 }
 
@@ -120,20 +133,21 @@ nav > a {
 .btn-quick-delete:hover {
   background-color: white;
   outline: color( black);
-  border-color: rgb(57, 134, 172);
+  border-color: rgb(61,121,94);
   display: inline-block;
   content: "\00d7"; 
 }
  */
- .saved-img-container {
+
+.saved-img-container {
   position: relative;
- }
+}
 
 .saved-img-container:hover .btn-quick-delete {
   background-color: white;
   outline: color( black);
   opacity: 1;
-  border-color: rgb(57, 134, 172);
+  border-color: rgb(59, 110, 87);
   z-index: 1;
   cursor: pointer;
 }
@@ -151,28 +165,7 @@ nav > a {
   border: 1px solid black;
   border-radius: 50px;
   font-size: 14px;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .container {
@@ -182,10 +175,10 @@ nav > a {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  /* background-color: rgb(57, 134, 172); */
+  /* background-color: rgb(61,121,94); */
   /* opacity: 0.5; */
   /* background-color: red; */
-  border-top: 1px solid rgb(57, 134, 172);
+  border-top: 1px solid rgb(59, 110, 87);
 
 }
 
@@ -202,7 +195,7 @@ nav > a {
   background-color: white;
   outline: color( black);
   opacity: 1;
-  border-color: rgb(57, 134, 172);
+  border-color: rgb(59, 110, 87);
 }
 
 .btn-quick-save {
@@ -229,7 +222,7 @@ nav > a {
 
 }
 .btn-glide-arrow:hover {
-  border: 1px solid rgb(57, 134, 172);
+  border: 1px solid rgb(59, 110, 87);
 }
 
 
@@ -257,19 +250,21 @@ width: 100%;
 
 .saved-books-grid-container {
   display: flex;
-grid-template-columns: 200px  200px 200px 200px;
+  grid-template-columns: 200px  200px 200px 200px;
   grid-template-rows: 200px  200px 200px 200px;
-  /* background-color: #00B7FF; */
-
 }
 
 
 
-.grid-container {
+.details-grid-container {
   /* background-color: #00B7FF; */
   display: grid;
   grid-template-columns: 1fr 2fr ;
   grid-template-rows: 1fr 1fr 1fr 1fr ;
+  border: solid rgb(61,121,94);
+  background-color: rgba(59, 110, 87, 0.3);
+  padding: 5%;
+
 }
 
 #grid-item1 {
@@ -294,25 +289,26 @@ grid-template-columns: 200px  200px 200px 200px;
   grid-row: 2/-1;
 }
 
-
-nav {
-  grid-area: nav;
-  background-color: rgb(57, 134, 172);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px 20px 10px 30px;
-  width: 98%;
-  margin-left: -1%;
-  margin-top: 0%;
-  word-spacing: 2px;
+.grid-item-4 {
+  grid-column: 1/-1;
+  grid-row: 4/-1;
+  justify-content: center;
+  text-align: center;
 }
+
+
+.btn-review-saved-pg{
+  color: white;
+  background-color: rgb(59, 110, 87);
+  border-radius: 30%;
+  padding: 2%;
+}
+
 
 body {
-  /* padding:0% */
+  padding:0%
 }
 
- 
 
 * {
   border-style: solid;
