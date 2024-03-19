@@ -1,25 +1,20 @@
 <%- include('../partials/header') %>
-  <h1><%= title %></h1>
-
-  <p>Welcome to StoryVerse, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</p>
-           
-<img class="book-img" src="/images/books-img.jpg" >
-
+  <h1>
+    <%= title %>
+  </h1>
   <main class="glide container-books-index ">
     <div class="container">
-      <div class="glide">         
-        <p class="header-text"> <strong>Fiction Books </strong> </p>
+      <div class="glide">
         <div class="glide__track" data-glide-el="track">
- 
           <ul class="glide__slides">
 
-            <% if (userData) { %> 
-              <% userData.items.forEach(function(book) { %>
+            <% if (searchedData) { %> 
+              <% searchedData.items.forEach(function(book) { %>
             
                 <% if (book.volumeInfo.imageLinks.thumbnail) { %>
                   <li class="glide__slide">
                     <div class="img-container">
-                    <img name="thumbnail" class="index-thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" width="100">
+                    <img name="thumbnail" class="index-thumbnail " src="<%= book.volumeInfo.imageLinks.thumbnail %>" class="img-circle" width="100">
                     <br>
                     <p name="title"><%= book.volumeInfo.title %></p>
                     <p name="authors">by <%= book.volumeInfo.authors %></p>
@@ -32,7 +27,7 @@
                       <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
                       <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
                       <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
-                      <button class="btn-quick-save" style="width:100px"> SAVE</button>
+                      <button class="btn-quick-save"> SAVE</button>
                     </form>
                     <br>
                     </div>
@@ -47,13 +42,23 @@
                 No book covers!
               </h3>
             <% } %>
+            
+
+
+
+
+
+            <li class="glide__slide">5</li>
+
+
+
 
           </ul>
         </div>
 
         <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left btn-glide-arrow" data-glide-dir="<"><</button>
-          <button class="glide__arrow glide__arrow--right btn-glide-arrow" data-glide-dir=">">></button>
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
         </div>
 
       </div>
@@ -69,5 +74,4 @@
     </script>
 
   </main>
-
   <%- include('../partials/footer') %>

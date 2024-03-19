@@ -1,22 +1,45 @@
 
 
 <%- include('../partials/header') %>
-<h2>Reviews</h2>
+<h2>Book Details</h2>
 
-<main class="grid-container">
-<section class="comments">
+<main class ="grid-container">
 
- 
-   <img id="grid-item1" class="grid-items book-thumbnail" src="<%= book.thumbnail %>" > 
-   </a>
-   <div class="grid-items" ><%= book.title %> </div>
-   <div class="grid-items"><%= book.authors %> </div>
-  <div class="grid-items"> <%= book.description %> </div>
-  <div class="grid-items"> GENRE:<%= book.categories %> </div>
-             
-WHAT DO YOU THINK?
+  <div id="grid-item1" class="grid-item grid-item-1">
+    <img id="grid-item1" style="width: 80%;"class="grid-items book-thumbnail" src="<%= book.thumbnail %>" > 
+  </div>
+  
+  <div class="grid-item grid-item-2">
+    <p><h3><%= book.title %> </h3></p>
+    <p><%= book.authors %></p>
+    <p><%= book.categories %>  </p>
+  </div>
+  <div class="grid-item grid-item-3"> 
+    <p><%= book.description %></p> </div>
+  </div>
+  <div class="grid-item grid-item-4"> GRID ITEM 4</div>
+</main>
 
- 
+
+
+
+
+<main class ="grid-container">
+
+  <div id="grid-item1" class="grid-item grid-item-1">  GRID ITEM 1
+
+  </div>
+  
+  <div class="grid-item grid-item-2"> GRID ITEM 2
+
+  </div>
+  <div class="grid-item grid-item-3"> GRID ITEM 3
+
+  </div>
+  <div class="grid-item grid-item-4"> GRID ITEM 4</div>
+</main>
+
+
   
 <br><br><h2>Comments</h2>
 <form id="add-review-form" method="POST"
@@ -48,7 +71,7 @@ WHAT DO YOU THINK?
           <td><%= c.content %></td>
 
           <td> 
-            <a href="/comments/<%= c._id %>/edit"> Edit Comment</a>
+            <!-- <a href="/comments/<%= c._id %>/edit"> Edit Comment</a> -->
             
             <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
               <textarea name="content"></textarea>
@@ -60,9 +83,6 @@ WHAT DO YOU THINK?
             <button type="Submit"> DELETE</button>
             </form>  
       </td>
-
-
-
         </tr>
       <% }); %>
     </tbody>
@@ -72,7 +92,7 @@ WHAT DO YOU THINK?
 <% } %>
 
 
-</main>
+
 
 
 

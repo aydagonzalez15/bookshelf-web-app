@@ -1,32 +1,22 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
-
-
 <main class="saved-books-container">
-<!-- 
-<section class="saved-books-grid"> -->
-
-
     <% books.forEach(function(b){ %>
-        <div id="thumbail" class="saved-book-item"> <a href="/books/<%=b._id%>"><img src="<%= b.thumbnail %>" > </a> 
+        <div id="thumbail" class=" saved-book-item"> 
+            <div class="saved-img-container">
+            <a href="/books/<%=b._id%>"><img class="img-saved" src="<%= b.thumbnail %>" > </a> 
             <form action="/books/<%= b._id %>?_method=DELETE" method="POST">
-                <button class="btn-quick-delete delete-btn" type="Submit"> DELETE</button>
-               
+                <button class="btn-quick-delete delete-btn" type="Submit">X</button>
             </form>  
-            <!-- <div id="title" class="saved-book-item"> -->
-                <strong> <%= b.title %></strong> <br>
-                by <a href="/books/author"><%= b.authors %></a>
-                
-            <!-- </div> -->
+            </div>
+            <div>
+            <strong> <%= b.title %></strong> <br>
+            by <a href="/books/author"><%= b.authors %></a>
+            </div>
          </div>
-
-        <!-- <div>
-  
-        </div> -->
     <%})%>
 
-<!-- </section> -->
 </main>
 <%- include('../partials/footer') %>
 

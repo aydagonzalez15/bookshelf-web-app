@@ -47,6 +47,126 @@ RENDERS BOOKS
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SHOW PAGE
+
+
+
+<%- include('../partials/header') %>
+<h2>Book Details</h2>
+
+<main class="saved-books-grid-container">
+
+
+ 
+
+   <div class="grid-items" > 
+      <p><%= book.title %> </p>
+      <p><%= book.authors %></p>
+      <p><%= book.categories %>  </p>
+      p<%= book.description %></p> </div>
+
+</main>           
+WHAT DO YOU THINK?
+
+ 
+  
+<br><br><h2>Comments</h2>
+<form id="add-review-form" method="POST"
+  action="/books/<%= book._id %>/comments">
+  <label>Comments:</label>
+  <textarea name="content"></textarea>
+
+  <input type="submit" value="Add Comment">
+</form>
+
+
+
+
+
+<% if (book.comment.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Comments</th>
+        <th>Edit</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% book.comment.forEach(function(c) { %>
+        <tr>
+          <td><%= c.createdAt.toLocaleDateString() %></td>
+          <td><%= c.content %></td>
+
+          <td> 
+            <a href="/comments/<%= c._id %>/edit"> Edit Comment</a>
+            
+            <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+              <textarea name="content"></textarea>
+              <button type="Submit"> EDIT</button>
+              </form> 
+          </td>
+          <td>           
+            <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+            <button type="Submit"> DELETE</button>
+            </form>  
+      </td>
+
+
+
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No comments Yet</h5>
+<% } %>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<%- include('../partials/footer') %>
+
+
+
     
 async function create(req, res) {
     try {
