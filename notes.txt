@@ -345,3 +345,15 @@ async function update(req, res) {
               <button type="Submit"> DELETE</button>
               </form>  
             </td> -->
+
+
+
+            BUTOTIN
+
+
+                <form action="/books/search" method="GET" autocomplete="off" name="title" class="search-bar">
+      <input name="title"></input>
+      <button type="submit"> 
+        <span class="material-symbols-outlined">search</span> 
+      </button>
+    </form>

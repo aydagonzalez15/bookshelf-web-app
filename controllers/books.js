@@ -55,8 +55,7 @@ function index(req, res, next) {
       Authorization: `token ${token}`
     }
   };
-
-  fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
+  fetch(`${ROOT_URL}books/v1/volumes?q=${bookTitle}&${token}`, options)
     .then(res => res.json())
     .then(userData => {
       res.render('books/', {userData, title : 'All Books in StoryVerse'});
@@ -66,29 +65,3 @@ function index(req, res, next) {
       res.status(500).send('Error fetching books');
     });
 };
-
-
-
-// function index(req, res, next) {
-//   const bookTitle = req.query.title
-//   const authorName = req.query.authorNAme
-//   console.log (`title: ${bookTitle}`)
-//   const author = req.query.author
-//   const options = {
-//     headers: {
-//       Authorization: `token ${token}`
-//     }
-//   };
-
-//   fetch(`${ROOT_URL}books/v1/volumes?q=${bookTitle}&${token}`, options)
-//     .then(res => res.json())
-//     .then(userData => {
-//       res.render('books/', {userData, title : 'All Books in StoryVerse'});
-//     })
-//     .catch(error => {
-//       console.error('Error fetching books:', error);
-//       res.status(500).send('Error fetching books');
-//     });
-// };
-
-

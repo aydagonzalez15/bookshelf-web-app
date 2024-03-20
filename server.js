@@ -59,7 +59,7 @@ app.use('/books', booksRouter);
 app.use('/', usersRouter);
 app.use('/', commentsRouter);  // LOOK at this, show this be path '/comments' 
 app.use('/', authorsRouter);
-app.use('/', authorsRouter);
+app.use('/', searchRouter);
 
 
 
