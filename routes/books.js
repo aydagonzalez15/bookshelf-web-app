@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var booksCtrl = require('../controllers/books')
+// Require the auth middleware
+const ensureLoggedIn = require('../config/ensureLoggedIn');
+
+
 
 //ALL PARTH START WITH /books
 
@@ -8,7 +12,7 @@ var booksCtrl = require('../controllers/books')
 router.get('/:id', booksCtrl.show)
 
 //POST	/posts	Create a new post	create	Yes
-router.post('/', booksCtrl.create)
+router.post('/', ensureLoggedIn, booksCtrl.create)
 
 
 
@@ -16,7 +20,7 @@ router.post('/', booksCtrl.create)
 router.get('/', booksCtrl.index)
 
 //DELETE		/comments/:id	
-router.delete('/:id', booksCtrl.delete)
+router.delete('/:id', ensureLoggedIn, booksCtrl.delete)
 
 module.exports = router;
 

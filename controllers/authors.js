@@ -6,9 +6,7 @@ const author = 'jodie+picoult'; // Specify the category you want to search for
 
 module.exports = {
   index,
-
 }
-
 
 function index(req, res, next) {
     const options = {

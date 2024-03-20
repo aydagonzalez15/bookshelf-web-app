@@ -34,14 +34,11 @@ async function create(req, res) {
       req.body.user = req.user._id;
       req.body.userName = req.user.name;
       req.body.userAvatar = req.user.avatar;
-      console.log("AVATARL", req.body.userAvatar)
       book.title= req.body.title
       book.authors= req.body.authors
       book.thumbnail= req.body.thumbnail
       book.description= req.body.description
       book.save()
-
-  // console.log("LOOK HERE:", book)
       res.redirect('users/');
   } catch (error) {
       console.error("Error saving , try Again Ayda:", error);
@@ -59,7 +56,7 @@ function index(req, res, next) {
   fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
     .then(res => res.json())
     .then(userData => {
-      res.render('books/', {userData, title : 'All Books in StoryVerse'});
+      res.render('books/', { userData, title: 'All Books in StoryVerse' });
     })
     .catch(error => {
       console.error('Error fetching books:', error);

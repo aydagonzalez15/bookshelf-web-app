@@ -2,7 +2,7 @@
 
 <%- include('../partials/header') %>
 <h2>Book Details</h2>
-<%=user%>
+
 <main class="details-grid-container" style="background-color: rgba(62, 90, 98, 0.1223);">
   <div id="grid-item1" class="grid-item grid-item-1">
     <img id="grid-item1" style="width: 80%;" class="grid-items book-thumbnail" src="<%= book.thumbnail %>">
@@ -50,6 +50,8 @@
             <%= c.createdAt.toLocaleDateString() %>
             <%= c.content %>
 
+
+          <% if (user?._id.equals(c.user)) { %>
             <form action="/comments/<%=c._id%>/edit" method="'GET">
               <button class="btn-edit-review-pg"> <span class="material-symbols-outlined">
                 edit
@@ -60,6 +62,7 @@
                 delete_forever
                 </span> </button>
               </form> 
+              <% } %>
         <% }); %>
 
   <% } else { %>
