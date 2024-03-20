@@ -50,6 +50,9 @@ async function deleteComment(req, res) {
 
 async function create(req, res) {
     const book = await Book.findById(req.params.id)
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     book.comment.push(req.body);
     try {
       await book.save();
@@ -72,7 +75,7 @@ async function edit(req, res) {
   }
   const comment = book.comment.find(comment => comment._id.toString() === req.params.id);
   if (!comment) {
-      return res.status(404).send("Comment not found.");
+      return res.status(404).send("Review not found.");
   }
   res.render('comments/edit', {book, comment, title : 'Edit Odes'})
 }

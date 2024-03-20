@@ -7,6 +7,13 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
+    user: [{
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+    }],
+    userName: String,
+    userAvatar: String    
 }, {
     timestamps: true
 });
@@ -32,7 +39,8 @@ const bookSchema = new Schema({
     },
     user: [{
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     }],
     description: String,
     categories: String,

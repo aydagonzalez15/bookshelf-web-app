@@ -9,31 +9,50 @@
   <link rel="stylesheet" href="/stylesheets/glide.core.min.css">
   <link rel="stylesheet" href="/stylesheets/glide.theme.min.css">
   <link rel='stylesheet' href='/stylesheets/style.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
 
 </head>
 
 <body>
-  <nav>
-    <div class="search-bar-div">
+
+    <nav class="nav-header-container">
+      <div class="search-bar-form-nav">
+        <form action="/search" method="GET" autocomplete="off" name="title" class="search-bar">
+          <input name="title"></input>
+          <button type="submit">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </form>
+      </div>
+      <!-- <div class="logo-img-nav"> -->
+      <img class="book-img-nav" src="/images/books-img3.png">
+      <!-- </div> -->
+      <div class="OAuth-links-nav">
+        <a href="/auth/google" class="login"> LOG IN &nbsp;<img src="https://i.imgur.com/FHjYyi0.png"> </a>
+        <a href="/logout" class="logout"> LOG OUT </a>
+      </div>
+    </nav>
+    
+    <nav class="nav-bar-header-links">
+      <!-- <div class="nav-icons-div"> -->
+      <!-- <a href="/"> HOME </a> | -->
+            <!-- <a href="/books/new">Add books</a> | -->
+
+      <a href="/books/"> HOME </a> |
+
+      <% if (user) { %>
+      <a href="/users/"> MY LIBROS </a> |
+
+      <% } else { %>
+        <a href="/auth/google"> MY LIBROS </a> |
+        <% } %>
+      <a href="/search/"> SEARCH </a>
 
 
-      <form action="/search" method="GET" autocomplete="off" name="title" class="search-bar">
-        <input name="title"></input>
-        <button type="submit"> 
-          <span class="material-symbols-outlined">search</span> 
-        </button>
-      </form>
-      
-    </div>
-
-    <a href="/">Home page  </a> |
-    <a href="/books/">  All books  </a> |
-    <!-- <a href="/books/new">Add books</a> | -->
-    <a href="/users/">  User's Saved books  </a> |
-    <a href="/search/">  Query  </a> |
-
-
-    <a href="/auth/google" class="login">  LOG IN &nbsp;<img src="https://i.imgur.com/FHjYyi0.png">  </a>
-    <a href="/logout">  LOG OUT  </a>
-  </nav>
+    
+    
+      <!-- </div> -->
+    </nav>

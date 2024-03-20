@@ -31,6 +31,9 @@ async function create(req, res) {
   try {
   // console.log("LOOK HERE ALSo:", req.body)
       const book = await Book.create(req.body)
+      req.body.user = req.user._id;
+      req.body.userName = req.user.name;
+      req.body.userAvatar = req.user.avatar;
       book.title= req.body.title
       book.authors= req.body.authors
       book.thumbnail= req.body.thumbnail

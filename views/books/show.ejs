@@ -2,8 +2,8 @@
 
 <%- include('../partials/header') %>
 <h2>Book Details</h2>
-
-<main class="details-grid-container">
+<%=user%>
+<main class="details-grid-container" style="background-color: rgba(62, 90, 98, 0.1223);">
   <div id="grid-item1" class="grid-item grid-item-1">
     <img id="grid-item1" style="width: 80%;" class="grid-items book-thumbnail" src="<%= book.thumbnail %>">
   </div>
@@ -20,19 +20,31 @@
     <br><br>
     <h2 style="font-style:italic">What do you think?</h2>
 
+    <% if (user) { %>
 
     <form action="/books/<%= book._id %>/comments/new" method="'GET">
       <button class="btn-review-saved-pg"> Write a review </button>
     </form>
+    <% } else { %>
+      <a href="/auth/google">
+        <button class="btn-review-saved-pg"> Write a review </button>
+      </a>
+    <% } %>
 
   </div>
 </main>
 
 <div class="comment-container">
-<div class="usernmae-comment-sect">USERNMAE and PICTURE</div>
+
 <div class="comment-section comment-blurb">
   <% if (book.comment.length) { %>
+    </div>
         <% book.comment.forEach(function(c) { %>
+          <div class="review-user usernmae-comment-sect">USERNMAE and PICTURE
+            <img src="<%=c.userAvatar %>" alt="avatar" referrerpolicy="no-referrer">
+            <%= c.userName %>
+          </div>
+      
             <%= c.createdAt.toLocaleDateString() %>
             <%= c.content %>
 

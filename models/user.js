@@ -9,13 +9,18 @@ const userSchema = new Schema({
     },
     email: String,
     thumbnail: String,
+
     book: [{
       type: Schema.Types.ObjectId,
       ref: 'Book'
-    }]
+    }],
+    userName: String,
+    userAvatar: String
   }, {
     timestamps: true
   });
   
+  module.exports = mongoose.model('User', userSchema)
 
-// Add refernce to book Schema
+
+

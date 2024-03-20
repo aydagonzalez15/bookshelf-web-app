@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
+
 <main class="saved-books-container">
     <% books.forEach(function(b){ %>
         <div id="thumbail" class=" saved-book-item"> 
@@ -12,7 +13,7 @@
                     </span> </button>
             </form>  
             </div>
-            <div>
+            <div class="saved-books-title">
             <strong> <%= b.title %></strong> <br>
             by <a href="/books/author"><%= b.authors %></a> 
             </div>
@@ -21,6 +22,3 @@
 
 </main>
 <%- include('../partials/footer') %>
-
-//TODO: OMGGGGGGGGGG 
-//FIXME:

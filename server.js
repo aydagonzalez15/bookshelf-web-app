@@ -6,6 +6,8 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session');
 var passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const User = require('./models/user');
 
 
 require('dotenv').config()

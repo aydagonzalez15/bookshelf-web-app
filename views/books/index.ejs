@@ -3,20 +3,14 @@
 
 
   <p>Welcome to StoryVerse, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</p>
-  <!-- <img class="book-img" src="/images/books-img.jpg" > -->
+  <!-- <img class="book-img" style="width: 20%;" src="/images/books-img3.png" > -->
   PLACEHOLDER IMAGE
-
-
-
   <main class="glide container-books-index ">
     <div class="container">
       <div class="glide">         
         <p class="header-text"> <strong>Fiction Books </strong> </p>
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
-
-
-
 
             <% if (userData) { %> 
               <% userData.items.forEach(function(book) { %>
@@ -26,22 +20,39 @@
                     <div class="img-container">
                     <img name="thumbnail" class="index-thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" width="100">
                     <br>
-                    <p name="title"><%= book.volumeInfo.title %></p>
-                    <p name="authors">by <%= book.volumeInfo.authors %></p>
+                    <div class="index-books-title">
+                      <p name="title"><strong><%= book.volumeInfo.title %></strong></p>
+                      <p name="authors">by <%= book.volumeInfo.authors %></p>
+                    </div>
                     <p name="description"><%book.volumeInfo.description%></p>
                     <p name="description"><%book.volumeInfo.categories%></p>
               
+                    <% if (user) { %>
+
                     <form action="/books" method="POST">
                       <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
                       <input type="text" hidden name="authors" value="<%= book.volumeInfo.authors %>">
                       <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
                       <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
                       <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
-                      <button class="btn-quick-save" style="width:100px"> <span class="material-symbols-outlined">
-                        bookmark
-                        </span>
-                        SAVE</button>
+                      
+                      
+                      
+                      <button class="btn-quick-save" style="width:100px">
+                        <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
+                          favorite
+                          </span></button>
                     </form>
+                    <% } else { %>
+
+                      <a href="/auth/google">
+                        <button class="btn-quick-save" style="width:100px">
+                          <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
+                            favorite
+                            </span></button>
+                      </a>
+                      <% } %>
+
                     <br>
                     </div>
                   </li>
@@ -73,7 +84,7 @@
     <script>
       const config ={
         type: 'carousel',
-        perView: 4
+        perView: 5
       }
       new Glide('.glide', config).mount()
     </script>
