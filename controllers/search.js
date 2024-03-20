@@ -19,7 +19,7 @@ function index(req, res, next) {
     fetch(`${ROOT_URL}books/v1/volumes?q=${bookTitle}&${token}`, options)
       .then(res => res.json())
       .then(userData => {
-        res.render('books/', {userData, title : 'Books found in Search'});
+        res.render('search/', {userData, title : 'Books found in Search'});
       })
       .catch(error => {
         console.error('Error fetching books:', error);

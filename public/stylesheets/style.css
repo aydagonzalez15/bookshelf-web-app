@@ -316,7 +316,7 @@ border: solid rgb(61,121,94);
 }
 
 .search-bar {
-  width: 50%;
+  width: 90%;
   max-width: 300px;
   display: flex;
   align-items: center;
@@ -335,8 +335,9 @@ border: solid rgb(61,121,94);
   outline: 2px;
   padding: 4px 20px;
   font-size: 15px;
-  border: solid #cac7ff;
-  color: #cac7ff;
+  /* border: solid #cac7ff; */
+  color: black;
+  background-color: none;
 
 }
 

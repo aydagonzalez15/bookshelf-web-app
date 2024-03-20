@@ -47,15 +47,12 @@ async function create(req, res) {
 
 
 function index(req, res, next) {
-  const bookTitle = req.query.title
-  console.log (`title: ${bookTitle}`)
-  const author = req.query.author
   const options = {
     headers: {
       Authorization: `token ${token}`
     }
   };
-  fetch(`${ROOT_URL}books/v1/volumes?q=${bookTitle}&${token}`, options)
+  fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
     .then(res => res.json())
     .then(userData => {
       res.render('books/', {userData, title : 'All Books in StoryVerse'});

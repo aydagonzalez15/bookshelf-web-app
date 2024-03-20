@@ -15,11 +15,23 @@
 
 <body>
   <nav>
+    <div class="search-bar-div">
+
+
+      <form action="/search" method="GET" autocomplete="off" name="title" class="search-bar">
+        <input name="title"></input>
+        <button type="submit"> 
+          <span class="material-symbols-outlined">search</span> 
+        </button>
+      </form>
+      
+    </div>
+
     <a href="/">Home page  </a> |
     <a href="/books/">  All books  </a> |
     <!-- <a href="/books/new">Add books</a> | -->
     <a href="/users/">  User's Saved books  </a> |
-    <a href="/authors/">  By Author  </a> |
+    <a href="/search/">  Query  </a> |
 
 
     <a href="/auth/google" class="login">  LOG IN &nbsp;<img src="https://i.imgur.com/FHjYyi0.png">  </a>
