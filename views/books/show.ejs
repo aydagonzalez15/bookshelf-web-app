@@ -40,10 +40,12 @@
   <% if (book.comment.length) { %>
     </div>
         <% book.comment.forEach(function(c) { %>
-          <div class="review-user usernmae-comment-sect">USERNMAE and PICTURE
-            <img src="<%=c.userAvatar %>" alt="avatar" referrerpolicy="no-referrer">
+          <div class="review-user usernmae-comment-sect">
+            <!-- Assuming c.userAvatar contains the URL of the user's avatar image -->
+            <img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer">
             <%= c.userName %>
           </div>
+          
       
             <%= c.createdAt.toLocaleDateString() %>
             <%= c.content %>

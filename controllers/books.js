@@ -34,6 +34,7 @@ async function create(req, res) {
       req.body.user = req.user._id;
       req.body.userName = req.user.name;
       req.body.userAvatar = req.user.avatar;
+      console.log("AVATARL", req.body.userAvatar)
       book.title= req.body.title
       book.authors= req.body.authors
       book.thumbnail= req.body.thumbnail
