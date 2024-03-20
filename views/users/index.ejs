@@ -7,7 +7,9 @@
             <div class="saved-img-container">
             <a href="/books/<%=b._id%>"><img class="img-saved" src="<%= b.thumbnail %>" > </a> 
             <form action="/books/<%= b._id %>?_method=DELETE" method="POST">
-                <button class="btn-quick-delete delete-btn" type="Submit">X</button>
+                <button class="btn-quick-delete delete-btn" type="Submit"> <span class="material-symbols-outlined">
+                    delete_forever
+                    </span> </button>
             </form>  
             </div>
             <div>

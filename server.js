@@ -17,6 +17,7 @@ var booksRouter = require('./routes/books');
 var usersRouter = require('./routes/users');
 var commentsRouter = require('./routes/comments');
 var authorsRouter = require('./routes/authors');
+var searchRouter = require('./routes/search');
 
 
 
@@ -57,6 +58,7 @@ app.use('/books', booksRouter);
 
 app.use('/', usersRouter);
 app.use('/', commentsRouter);  // LOOK at this, show this be path '/comments' 
+app.use('/', authorsRouter);
 app.use('/', authorsRouter);
 
 

@@ -11,6 +11,9 @@ router.delete('/comments/:id', commentsCtrl.delete)
 //PUT	/comments/:id	Update specified comment	"Shallow" route / Needs payload
 router.put('/comments/:id', commentsCtrl.update)
 
+
+router.get('/comments/:id/edit', commentsCtrl.edit)
+
 ///to add EDIT Skill must use GET--> /skills/:id/edit
 // router.get('/comments/:id/edit', commentsCtrl.edit)
 router.get('/books/:id/comments/new', commentsCtrl.index)

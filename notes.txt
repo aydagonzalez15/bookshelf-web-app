@@ -325,3 +325,23 @@ async function update(req, res) {
               </h3>
               <% } %>
 
+
+
+
+
+
+
+<!-- 
+            <td> 
+              <!-- <a href="/comments/<%= c._id %>/edit"> Edit Comment</a> -->
+              
+              <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+                <textarea name="content"></textarea>
+                <button type="Submit" value="<%= c.content %>"> EDIT Button</button>
+                </form> 
+            </td>
+            <td>           
+              <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+              <button type="Submit"> DELETE</button>
+              </form>  
+            </td> -->

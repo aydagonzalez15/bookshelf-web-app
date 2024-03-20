@@ -3,93 +3,56 @@
 <%- include('../partials/header') %>
 <h2>Book Details</h2>
 
-<main class ="details-grid-container">
+<main class="details-grid-container">
   <div id="grid-item1" class="grid-item grid-item-1">
-    <img id="grid-item1" style="width: 80%;"class="grid-items book-thumbnail" src="<%= book.thumbnail %>" > 
+    <img id="grid-item1" style="width: 80%;" class="grid-items book-thumbnail" src="<%= book.thumbnail %>">
   </div>
   <div class="grid-item grid-item-2">
-    <p><h3><%= book.title %> </h3></p>
+    <p><h3> <%= book.title %></h3> </p>
     <p> by <%= book.authors %></p>
-    <p><%= book.categories %>  </p>
+    <p> <%= book.categories %> </p>
   </div>
-  <div class="grid-item grid-item-3"> 
+  <div class="grid-item grid-item-3">
     <h4>Overview:</h4>
-    <p><%= book.description %></p> </div>
+    <p> <%= book.description %> </p>
   </div>
-  <div class="grid-item grid-item-4">  
-    <br><br><h2 style="font-style:italic">What do you think?</h2>
+  <div class="grid-item grid-item-4">
+    <br><br>
+    <h2 style="font-style:italic">What do you think?</h2>
 
-    
-<form action="/books/<%= book._id %>/comments/new" method="'GET">
-  <button class="btn-review-saved-pg" > Write a review </button>
-</form>
+
+    <form action="/books/<%= book._id %>/comments/new" method="'GET">
+      <button class="btn-review-saved-pg"> Write a review </button>
+    </form>
 
   </div>
 </main>
 
+<div class="comment-container">
+<div class="usernmae-comment-sect">USERNMAE and PICTURE</div>
+<div class="comment-section comment-blurb">
+  <% if (book.comment.length) { %>
+        <% book.comment.forEach(function(c) { %>
+            <%= c.createdAt.toLocaleDateString() %>
+            <%= c.content %>
 
-
-
-
-<main class ="grid-container">
-  <div id="grid-item1" class="grid-item grid-item-1">  GRID ITEM 1</div>
-
-  <div class="grid-item grid-item-2"> GRID ITEM 2
-
-  </div>
-  <div class="grid-item grid-item-3"> GRID ITEM 3
-
-  </div>
-  <div class="grid-item grid-item-4"> GRID ITEM 4</div>
-</main>
-
-
-
-
-
-
-
-
-<% if (book.comment.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Comments</th>
-        <th>Edit</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <% book.comment.forEach(function(c) { %>
-        <tr>
-          <td><%= c.createdAt.toLocaleDateString() %></td>
-          <td><%= c.content %></td>
-
-          <td> 
-            <!-- <a href="/comments/<%= c._id %>/edit"> Edit Comment</a> -->
-            
-            <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
-              <textarea name="content"></textarea>
-              <button type="Submit"> EDIT Button</button>
-              </form> 
-          </td>
-          <td>           
+            <form action="/comments/<%=c._id%>/edit" method="'GET">
+              <button class="btn-edit-review-pg"> <span class="material-symbols-outlined">
+                edit
+                </span> </button>
+            </form>
             <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-            <button type="Submit"> DELETE</button>
-            </form>  
-          </td>
-        </tr>
-      <% }); %>
-    </tbody>
-  </table>
-<% } else { %>
-  <h5>No comments Yet</h5>
-<% } %>
+              <button class="btn-delete-review-pg" type="Submit"> <span class="material-symbols-outlined">
+                delete_forever
+                </span> </button>
+              </form> 
+        <% }); %>
 
-
-
-
+  <% } else { %>
+    <h5>No comments Yet</h5>
+  <% } %>
+</div>
+</div>
 
 
 

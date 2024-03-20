@@ -3,7 +3,8 @@ const {Book, Comment} = require('../models/book')
 
 
 module.exports = {
-  index,
+    index,
+    edit,
     create,
     delete: deleteComment,
     update
@@ -14,17 +15,13 @@ async function update(req, res) {
   try {
       // Find the book document that contains the comment with the given ID
       const book = await Book.findOne({ 'comment._id': req.params.id });
-
       console.log("BOOK LOG:", book);
-
       // Ensure the book and its comment were found
       if (!book) {
           return res.status(404).send("Book not found.");
       }
-
       // Find the specific comment within the book
       const comment = book.comment.find(comment => comment._id.toString() === req.params.id);
-
       if (!comment) {
           return res.status(404).send("Comment not found.");
       }
@@ -33,7 +30,7 @@ async function update(req, res) {
       comment.content = req.body.content;
       // Save the updated book document
       await book.save();
-      res.redirect(`/users`);
+      res.redirect(`/books/${book._id}`);
   } catch (error) {
       console.error(error);
       res.status(500).send("An error occurred.");
@@ -66,4 +63,16 @@ async function index(req, res) {
   const book = await Book.findById(req.params.id)
 
   res.render('comments/new', {book, title : 'Opinion Odes'})
+}
+
+async function edit(req, res) {
+  const book = await Book.findOne({ 'comment._id': req.params.id });
+  if (!book) {
+      return res.status(404).send("Book not found.");
+  }
+  const comment = book.comment.find(comment => comment._id.toString() === req.params.id);
+  if (!comment) {
+      return res.status(404).send("Comment not found.");
+  }
+  res.render('comments/edit', {book, comment, title : 'Edit Odes'})
 }

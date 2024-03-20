@@ -1,13 +1,16 @@
 <%- include('../partials/header') %>
   <h1><%= title %></h1>
+  <div class="search-bar-div">
+    <form action="/books" method="GET" autocomplete="off" placeholder="title" name="title" class="search-bar">
+      <input name="title"></input>
+      <button type="submit"><span class="material-symbols-outlined">
+        search</span></button>
+    </form>
+  </div>
 
   <p>Welcome to StoryVerse, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</p>
-  <!-- <img class="book-img" src="/images/books-img.jpg" > -->
-
-  <form action="/books" method="GET" autocomplete="off" placeholder="title" name="title">
-    <input name="title"></input>
-    <button type="submit">SEARCH</button>
-  </form>
+  <img class="book-img" src="/images/books-img.jpg" >
+  PLACEHOLDER IMAGE
 
 
 
@@ -40,7 +43,10 @@
                       <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
                       <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
                       <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
-                      <button class="btn-quick-save" style="width:100px"> SAVE</button>
+                      <button class="btn-quick-save" style="width:100px"> <span class="material-symbols-outlined">
+                        bookmark
+                        </span>
+                        SAVE</button>
                     </form>
                     <br>
                     </div>
@@ -59,8 +65,12 @@
         </div>
 
         <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left btn-glide-arrow" data-glide-dir="<"><</button>
-          <button class="glide__arrow glide__arrow--right btn-glide-arrow" data-glide-dir=">">></button>
+          <button class="glide__arrow glide__arrow--left btn-glide-arrow" data-glide-dir="<"> <span class="material-symbols-outlined">
+            arrow_back_ios
+            </span></button>
+          <button class="glide__arrow glide__arrow--right btn-glide-arrow" data-glide-dir=">"> <span class="material-symbols-outlined">
+            arrow_forward_ios
+            </span> </button>
         </div>
 
       </div>

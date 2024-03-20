@@ -1,13 +1,72 @@
 <%- include('../partials/header') %>
 
-<br> <br>
-<!-- 
-<form action="/comments/<%= commentId%>?_method=PUT" method="POST" autocomplete="off">
-    <input name="content"></input>
-    <button type="submit">Edit MORE Comment</button>
-</form> -->
+  <h2><%= title %></h2>
 
 
 
 
-<%- include('../partials/footer') %>
+  <main class="comments-page-container">
+    <div>
+      <p>
+      <h3>
+        <%= book.title %> > Review
+      </h3>
+      </p>
+    </div>
+    <div class="comment-book-thumbnail-div">
+      <img id="grid-item1" style="width: 14%;" class="grid-items comment-book-thumbnail" src="<%= book.thumbnail %>"> <br>
+     <strong> <%= book.title %></strong> <br> by <%= book.authors %>
+    </div>
+    <div class="comment-box-new-page">
+      polish Your Thoughts?
+      <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <textarea name="content" rows="20" cols="60"><%= comment.content %></textarea>
+        <br>
+        <button type="Submit" value=""> Post Edit</button>
+        </form> 
+<br>          
+
+    </div>
+  </main>
+
+  
+  <main class="comments-page-container">
+    <div>
+      <p>
+
+
+
+            <td> 
+
+ 
+            </td> 
+
+
+
+
+
+  <%- include('../partials/footer') %>
+
+  <h2><%= title %></h2>
+
+  <main class="comments-page-container">
+    <div>
+      <p>
+      <h3>
+        <%= book.title %> > Review
+      </h3>
+      </p>
+    </div>
+    <div class="comment-book-thumbnail-div">
+      <img id="grid-item1" style="width: 14%;" class="grid-items comment-book-thumbnail" src="<%= book.thumbnail %>"> <br>
+     <strong> <%= book.title %></strong> <br> by <%= book.authors %>
+    </div>
+    <div class="comment-box-new-page">
+      What do you think?
+      <form id="add-review-form" method="POST" action="/books/<%= book._id %>/comments">
+        <textarea name="content" rows="20" cols="60"></textarea> <br>
+        <input class="btn-review-saved-pg" type="submit" value="POST">
+      </form>
+    </div>
+  </main>
+
