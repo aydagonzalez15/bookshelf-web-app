@@ -3,15 +3,21 @@
 <%- include('../partials/header') %>
 <h2>Book Details</h2>
 
-<main class="details-grid-container" style="background-color: rgba(62, 90, 98, 0.1223);">
+<main class="details-grid-container">
   <div id="grid-item1" class="grid-item grid-item-1">
-    <img id="grid-item1" style="width: 80%;" class="grid-items book-thumbnail" src="<%= book.thumbnail %>">
+    <img id="grid-item1" style="width: 20%;" class="grid-items book-thumbnail" src="<%= book.thumbnail %>">
+  <!-- </div> -->
+  <!-- <div class="grid-item grid-item-2"> -->
+    <p><h3> <%= book.title %>
+      by <%= book.authors %>
+      <!-- Genre: <%= book.categories %></h3>  -->
+ 
+
+  </p>
+
+
   </div>
-  <div class="grid-item grid-item-2">
-    <p><h3> <%= book.title %></h3> </p>
-    <p> by <%= book.authors %></p>
-    <p> <%= book.categories %> </p>
-  </div>
+
   <div class="grid-item grid-item-3">
     <h4>Overview:</h4>
     <p> <%= book.description %> </p>
@@ -31,51 +37,55 @@
       </a>
     <% } %>
 
+
+
+
+    <div class="comment-container grid-item-5">
+
+      <div class="comment-section comment-blurb">
+        <% if (book.comment.length) { %>
+          </div>
+
+          <% book.comment.forEach(function(c) { %>
+            <div class="unique-comment">
+            <div class="review-user usernmae-comment-sect">
+              <div class="img-username-comment-section"><br>
+                <!-- Assuming c.userAvatar contains the URL of the user's avatar image -->
+                <img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer">
+                <%= c.userName %> <br>
+              </div>
+
+              <div class="comment-box-details-pg">
+              <%= c.createdAt.toLocaleDateString() %> <br> <br>
+              <%= c.content %>
+              
+              <% if (user?._id.equals(c.user)) { %>
+                <form class="edit-comment-form" action="/comments/<%=c._id%>/edit" method="GET">
+                  <button class="btn-edit-review-pg">
+                    <span class="material-symbols-outlined">edit</span>
+                  </button>
+                </form>
+                <form class="delete-comment-form" action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                  <button class="btn-delete-review-pg" type="Submit">
+                    <span class="material-symbols-outlined">delete_forever</span>
+                  </button>
+                </form>
+              </div>
+              <% } %>
+              <br>
+            </div>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <h5>No comments Yet</h5>
+        <% } %>
+      </div>
+    </div>
+
+
+
   </div>
 </main>
-
-<div class="comment-container">
-
-<div class="comment-section comment-blurb">
-  <% if (book.comment.length) { %>
-    </div>
-        <% book.comment.forEach(function(c) { %>
-          <div class="review-user usernmae-comment-sect">
-            <!-- Assuming c.userAvatar contains the URL of the user's avatar image -->
-            <img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer">
-            <%= c.userName %>
-          </div>
-          
-      
-            <%= c.createdAt.toLocaleDateString() %>
-            <%= c.content %>
-
-
-          <% if (user?._id.equals(c.user)) { %>
-            <form action="/comments/<%=c._id%>/edit" method="'GET">
-              <button class="btn-edit-review-pg"> <span class="material-symbols-outlined">
-                edit
-                </span> </button>
-            </form>
-            <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-              <button class="btn-delete-review-pg" type="Submit"> <span class="material-symbols-outlined">
-                delete_forever
-                </span> </button>
-              </form> 
-              <% } %>
-        <% }); %>
-
-  <% } else { %>
-    <h5>No comments Yet</h5>
-  <% } %>
-</div>
-</div>
-
-
-
- 
-  
-
 
 
 

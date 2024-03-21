@@ -1,9 +1,12 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
-<% if (user) { %>
+
+
 <main class="saved-books-container">
-    <% books.forEach(function(b){ %>
+    <% userObj.favBooks.forEach(function(b){ %>
+
+
         <div id="thumbail" class=" saved-book-item"> 
             <div class="saved-img-container">
             <a href="/books/<%=b._id%>"><img class="img-saved" src="<%= b.thumbnail %>" > </a> 
@@ -18,11 +21,10 @@
             by <a href="/books/author"><%= b.authors %></a> 
             </div>
         </div>
-
     <%})%>
 
+
 </main>
-<% } %>
 
 
 <%- include('../partials/footer') %>

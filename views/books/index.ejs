@@ -2,8 +2,8 @@
   <h1><%= title %></h1>
 
 
-  <p>Welcome to StoryVerse, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</p>
-  <!-- <img class="book-img" style="width: 20%;" src="/images/books-img3.png" > -->
+  <p>Welcome to Libros, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</p>
+  <img class="book-img" style="width: 20%;" src="/images/books-img3.png" >
   PLACEHOLDER IMAGE
   <main class="glide container-books-index ">
     <div class="container">
@@ -36,8 +36,6 @@
                       <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
                       <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
                       
-                      
-                      
                       <button class="btn-quick-save" style="width:100px">
                         <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
                           favorite
@@ -46,10 +44,10 @@
                     <% } else { %>
 
                       <a href="/auth/google">
-                        <button class="btn-quick-save" style="width:100px">
-                          <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
-                            favorite
-                            </span></button>
+                                              <button class="btn-quick-save" style="width:100px">
+                        <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
+                          favorite
+                          </span></button>
                       </a>
                       <% } %>
 
@@ -103,3 +101,85 @@
 
 
   <%- include('../partials/footer') %>
+
+
+  <div class="container">
+    <div class="glide">         
+      <p class="header-text"> <strong> Books </strong> </p>
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+
+          <% if (userData) { %> 
+            <% userData.items.forEach(function(book) { %>
+          
+              <% if (book.volumeInfo.imageLinks.thumbnail) { %>
+                <li class="glide__slide">
+                  <div class="img-container">
+                  <img name="thumbnail" class="index-thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" width="100">
+                  <br>
+                  <div class="index-books-title">
+                    <p name="title"><strong><%= book.volumeInfo.title %></strong></p>
+                    <p name="authors">by <%= book.volumeInfo.authors %></p>
+                  </div>
+                  <p name="description"><%book.volumeInfo.description%></p>
+                  <p name="description"><%book.volumeInfo.categories%></p>
+            
+                  <% if (user) { %>
+
+                  <form action="/books" method="POST">
+                    <input type="text" hidden name="title" value="<%= book.volumeInfo.title %>">
+                    <input type="text" hidden name="authors" value="<%= book.volumeInfo.authors %>">
+                    <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
+                    <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
+                    <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
+                    
+                    <button class="btn-quick-save" style="width:100px">
+                      <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
+                        favorite
+                        </span></button>
+                  </form>
+                  <% } else { %>
+
+                    <a href="/auth/google">
+                                            <button class="btn-quick-save" style="width:100px">
+                      <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
+                        favorite
+                        </span></button>
+                    </a>
+                    <% } %>
+
+                  <br>
+                  </div>
+                </li>
+              <% } %>
+          
+            <% }); %>
+          <% } else { %>
+
+            <h3 class="text-info">
+              No book covers!
+            </h3>
+          <% } %>
+
+        </ul>
+      </div>
+
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left btn-glide-arrow" data-glide-dir="<"> <span class="material-symbols-outlined">
+          arrow_back_ios
+          </span></button>
+        <button class="glide__arrow glide__arrow--right btn-glide-arrow" data-glide-dir=">"> <span class="material-symbols-outlined">
+          arrow_forward_ios
+          </span> </button>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+  <script>
+    const config ={
+      type: 'carousel',
+      perView: 5
+    }
+    new Glide('.glide', config).mount()
+  </script>

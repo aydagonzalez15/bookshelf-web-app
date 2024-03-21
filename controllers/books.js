@@ -1,4 +1,5 @@
 const {Book} = require('../models/book')
+const User = require('../models/user')
 const token = process.env.GOOGLE_KEY
 const ROOT_URL = 'https://www.googleapis.com/';
 const category = 'fiction'; // Specify the category you want to search for
@@ -31,6 +32,7 @@ async function create(req, res) {
   try {
   // console.log("LOOK HERE ALSo:", req.body)
       const book = await Book.create(req.body)
+      const user = await User.findById(req.user._id)
       req.body.user = req.user._id;
       req.body.userName = req.user.name;
       req.body.userAvatar = req.user.avatar;
@@ -38,7 +40,10 @@ async function create(req, res) {
       book.authors= req.body.authors
       book.thumbnail= req.body.thumbnail
       book.description= req.body.description
+
       book.save()
+      user.favBooks.push(book)
+      user.save()
       res.redirect('users/');
   } catch (error) {
       console.error("Error saving , try Again Ayda:", error);
@@ -56,7 +61,7 @@ function index(req, res, next) {
   fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
     .then(res => res.json())
     .then(userData => {
-      res.render('books/', { userData, title: 'All Books in StoryVerse' });
+      res.render('books/', { userData, title: 'Libros' });
     })
     .catch(error => {
       console.error('Error fetching books:', error);
