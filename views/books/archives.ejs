@@ -18,7 +18,7 @@
             </div>
             <div class="saved-books-title">
             <strong> <%= b.title %></strong> <br>
-            by <a href="/books/author"><%= b.authors %></a> 
+            by <a href="/search?title=<%= b.authors %>"><%= b.authors %></a> 
             </div>
         </div>
     <%})%>

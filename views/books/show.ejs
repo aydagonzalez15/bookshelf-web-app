@@ -56,7 +56,7 @@
               </div>
 
               <div class="comment-box-details-pg">
-              <%= c.createdAt.toLocaleDateString() %> <br> <br>
+              <%= c.createdAt.toLocaleDateString() %> <%= c.createdAt.toLocaleTimeString() %><br> <br>
               <%= c.content %>
               
               <% if (user?._id.equals(c.user)) { %>
