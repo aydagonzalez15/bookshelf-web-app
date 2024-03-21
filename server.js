@@ -28,12 +28,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.get('/dynamic-content', (req, res) => {
-  // Here you can generate dynamic content as needed
-  const dynamicContent = '<h2>This is dynamic content generated on the server!</h2>';
-  res.send(dynamicContent);
-});
-
 
 app.use(logger('dev'));
 app.use(express.json());

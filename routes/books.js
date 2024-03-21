@@ -22,7 +22,7 @@ router.get('/', booksCtrl.index)
 router.delete('/:id', ensureLoggedIn, booksCtrl.delete)
 
 
-router.get('/book-id', booksCtrl.bookDetails)
+router.post('/googleapiID', booksCtrl.bookDetails)
 
 module.exports = router;
 

@@ -2,9 +2,16 @@
   <h1><%= title %></h1>
 
 
-  <p>Welcome to Libros, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</p>
-  <img class="book-img" style="width: 20%;" src="/images/books-img3.png" >
-  PLACEHOLDER IMAGE
+  <h3>Welcome to Libros, your go-to destination for discovering new worlds through books. Explore our vast collection of fiction, non-fiction, and everything in between.</h3>
+ 
+  <div  class="main-book-img-div" >
+    <!-- <img class="main-book-img"  src="/images/books-img2.jpg"> -->
+    <!-- <img class="main-book-img"  src="/images/book-main-pg.jpeg"> -->
+    <!-- <img class="main-book-img"  src="/images/bookshelf.jpeg"> -->
+    <!-- <img class="main-book-img"  src="/images/book-main.jpeg"> -->
+    <img class="main-book-img"  src="/images/Picture1.jpg">
+  </div>
+
   <main class="glide container-books-index ">
     <div class="container">
       <div class="glide">         
@@ -26,10 +33,14 @@
                       <p name="authors">by <a href="/search?title=<%= book.volumeInfo.authors %>"><%= book.volumeInfo.authors %></a></p>
                     </div>
                     <p name="description"><%book.volumeInfo.description%></p>
-                    <p name="description"><%book.volumeInfo.categories%></p>
+                    <p name="catergories"><%book.volumeInfo.categories%></p>
                     <p name="googleapiID"><%book.id%></p>
-                    <form action="/books/book-id" method="GET">
-                    <a href="/books/<%book.id%>">Book</a>
+
+                    
+
+                    <form action="/books/googleapiID" method="POST">
+                      <input name="googleapiID" type="text" hidden value="<%=book.id%>" >
+                    <button class="btn-quick-save btn-quick-details" type="submit">details</button>
                     </form>
               
                     <% if (user) { %>
@@ -40,12 +51,13 @@
                       <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
                       <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
                       <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
-                      <input type="text" hidden name="googleapiID" value="<%= book.volumeInfo.googleapiID %>">
+                      <input type="text" hidden name="googleapiID" value="<%= book.id%>">
                       
                       <button class="btn-quick-save" style="width:100px">
                         <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">
                           favorite
-                          </span></button>
+                        </span>
+                      </button>
                     </form>
 
                     <% } else { %>
@@ -93,20 +105,7 @@
       }
       new Glide('.glide', config).mount()
     </script>
-
   </main>
-
-
-
-
-
-
-
-
-
-
-
-
   <%- include('../partials/footer') %>
 
   

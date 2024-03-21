@@ -13,22 +13,42 @@ module.exports = {
   bookDetails
 }
 
-function bookDetails(req, res) {
+
+async function bookDetails(req, res) {
+  // console.log("THISISHTELOG:", req.body,req.body.googleapiID)
+  const googleapiID = req.body.googleapiID.toString()
+  // console.log("THISISHTELOG3333:", googleapiID)
+  const book = await Book.findOne({ "googleapiID": googleapiID });
+  console.log("BOOK:", book)
+  if (!book) {
+
     const options = {
       headers: {
         Authorization: `token ${token}`
       }
     };
-    fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
+    fetch(`${ROOT_URL}books/v1/volumes?q=${googleapiID}&${token}`, options)
       .then(res => res.json())
       .then(userData => {
-        res.render('books/bookDetails', { userData, title: 'Book Details' });
+        res.render('books/details', { userData, title: 'Book Detalles' });
       })
       .catch(error => {
         console.error('Error fetching books:', error);
         res.status(500).send('Error fetching books');
       });
+    
+  } else {
+    res.render('books/show', {book, title : 'Opinion Odes'})
 };
+
+  
+};
+
+
+
+
+
+
 
 async function deleteBook(req, res) {
   const book = await Book.findOne({ '_id': req.params.id})
@@ -61,11 +81,10 @@ async function create(req, res) {
     book.authors= req.body.authors
     book.thumbnail= req.body.thumbnail
     book.description= req.body.description
-    book.googleapiID = req.body.id
+    book.googleapiID = req.body.googleapiID
     book.save()
     user.favBooks.push(book)
     user.save()
-
       }
       res.redirect('users/');
   } catch (error) {

@@ -357,3 +357,30 @@ async function update(req, res) {
         <span class="material-symbols-outlined">search</span> 
       </button>
     </form>
+
+
+
+
+
+
+
+async function bookDetails(req, res) {
+  console.log("THISISHTELOG:", req.body,req.body.googleapiID)
+  // const googleapiID = req.body.googleapiID.toString()
+  // console.log("THISISHTELOG3333:", googleapiID)
+  const book = await Book.findOne({ "googleapiID": googleapiID });
+  console.log("BOOK:", book)
+  if (!book) {
+
+
+
+
+
+
+    
+  } else {
+    res.render('books/show', {book, title : 'Opinion Odes'})
+};
+
+  
+};
