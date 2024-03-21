@@ -45,6 +45,7 @@ const bookSchema = new Schema({
     description: String,
     categories: String,
     comment: [commentSchema],
+    googleapiID: String,
 },
 {
     timestamps: true

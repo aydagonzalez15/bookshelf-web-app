@@ -27,7 +27,10 @@
                     </div>
                     <p name="description"><%book.volumeInfo.description%></p>
                     <p name="description"><%book.volumeInfo.categories%></p>
-                    <a href="/books/BOOKID">LINK</a>
+                    <p name="googleapiID"><%book.id%></p>
+                    <form action="/books/book-id" method="GET">
+                    <a href="/books/<%book.id%>">Book</a>
+                    </form>
               
                     <% if (user) { %>
 
@@ -37,6 +40,7 @@
                       <input type="text" hidden name="thumbnail" value="<%= book.volumeInfo.imageLinks.thumbnail %>">
                       <input type="text" hidden name="description" value="<%= book.volumeInfo.description %>">
                       <input type="text" hidden name="categories" value="<%= book.volumeInfo.categories %>">
+                      <input type="text" hidden name="googleapiID" value="<%= book.volumeInfo.googleapiID %>">
                       
                       <button class="btn-quick-save" style="width:100px">
                         <span class="material-symbols-outlined" style="color: rgba(62, 90, 98, 0.631);">

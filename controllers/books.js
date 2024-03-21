@@ -9,8 +9,26 @@ module.exports = {
   index,
   create,
   show,
-  delete: deleteBook
+  delete: deleteBook,
+  bookDetails
 }
+
+function bookDetails(req, res) {
+    const options = {
+      headers: {
+        Authorization: `token ${token}`
+      }
+    };
+    fetch(`${ROOT_URL}books/v1/volumes?q=subject:${category}&${token}`, options)
+      .then(res => res.json())
+      .then(userData => {
+        res.render('books/bookDetails', { userData, title: 'Book Details' });
+      })
+      .catch(error => {
+        console.error('Error fetching books:', error);
+        res.status(500).send('Error fetching books');
+      });
+};
 
 async function deleteBook(req, res) {
   const book = await Book.findOne({ '_id': req.params.id})
@@ -24,7 +42,6 @@ async function show(req, res) {
   const book = await Book.findById(req.params.id)
   res.render('books/show', { title: 'Book Detail', book,  });
 }
-
 
 async function create(req, res) {
   try {
@@ -44,6 +61,7 @@ async function create(req, res) {
     book.authors= req.body.authors
     book.thumbnail= req.body.thumbnail
     book.description= req.body.description
+    book.googleapiID = req.body.id
     book.save()
     user.favBooks.push(book)
     user.save()

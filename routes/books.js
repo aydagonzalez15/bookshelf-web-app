@@ -21,6 +21,9 @@ router.get('/', booksCtrl.index)
 //DELETE		/comments/:id	
 router.delete('/:id', ensureLoggedIn, booksCtrl.delete)
 
+
+router.get('/book-id', booksCtrl.bookDetails)
+
 module.exports = router;
 
 
