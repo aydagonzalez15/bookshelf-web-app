@@ -26,30 +26,57 @@ async function show(req, res) {
 }
 
 
-
-    
 async function create(req, res) {
   try {
-  // console.log("LOOK HERE ALSo:", req.body)
-      const book = await Book.create(req.body)
-      const user = await User.findById(req.user._id)
-      req.body.user = req.user._id;
-      req.body.userName = req.user.name;
-      req.body.userAvatar = req.user.avatar;
-      book.title= req.body.title
-      book.authors= req.body.authors
-      book.thumbnail= req.body.thumbnail
-      book.description= req.body.description
+    const user = await User.findById(req.user._id)
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
+    
+    const existingBook = await Book.findOne({ title: req.body.title });
 
-      book.save()
-      user.favBooks.push(book)
-      user.save()
+    if (existingBook) {
+      user.favBooks.push(existingBook);
+      await user.save();
+    } else {
+    const book = await Book.create(req.body)
+    book.title= req.body.title
+    book.authors= req.body.authors
+    book.thumbnail= req.body.thumbnail
+    book.description= req.body.description
+    book.save()
+    user.favBooks.push(book)
+    user.save()
+
+      }
       res.redirect('users/');
   } catch (error) {
       console.error("Error saving , try Again Ayda:", error);
-      // res.status(500).send("Internal Server Error");
   }
 };
+    
+// async function create(req, res) {
+//   try {
+//   // console.log("LOOK HERE ALSo:", req.body)
+//       const book = await Book.create(req.body)
+//       const user = await User.findById(req.user._id)
+//       req.body.user = req.user._id;
+//       req.body.userName = req.user.name;
+//       req.body.userAvatar = req.user.avatar;
+//       book.title= req.body.title
+//       book.authors= req.body.authors
+//       book.thumbnail= req.body.thumbnail
+//       book.description= req.body.description
+
+//       book.save()
+//       user.favBooks.push(book)
+//       user.save()
+//       res.redirect('users/');
+//   } catch (error) {
+//       console.error("Error saving , try Again Ayda:", error);
+//       // res.status(500).send("Internal Server Error");
+//   }
+// };
 
 
 function index(req, res, next) {

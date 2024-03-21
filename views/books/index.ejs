@@ -27,6 +27,7 @@
                     </div>
                     <p name="description"><%book.volumeInfo.description%></p>
                     <p name="description"><%book.volumeInfo.categories%></p>
+                    <a href="/books/BOOKID">LINK</a>
               
                     <% if (user) { %>
 
@@ -42,6 +43,7 @@
                           favorite
                           </span></button>
                     </form>
+
                     <% } else { %>
 
                       <a href="/auth/google">

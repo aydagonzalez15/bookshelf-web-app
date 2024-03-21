@@ -22,6 +22,10 @@ nav > a {
   justify-content: center;
   border-top: 1px black solid;
 }
+nav > a:hover {
+  background-color: #88AB8E;
+  border-radius: 5%;
+}
 
 .nav-bar-header-links > a {
   padding-left: 5%;
@@ -38,6 +42,8 @@ nav {
   justify-content: space-between ;
   margin-left: -2.9%;
   margin-right: -2.9%;
+  /* border-bottom: 5px solid red; */
+  box-shadow: 0 5px 5px #888888;
 }
 
 .OAuth-links-nav {
@@ -132,9 +138,11 @@ justify-content: flex-end;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  border-top: 1px solid rgb(59, 110, 87);
+  border-top: 1px solid #88AB8E;
+  border-bottom: 1px solid #88AB8E;
   background-color: #F2F1EB;
   border-radius: 3%;
+  /* box-shadow: 1px 0 1px 2px #888888; */
 }
 
 .img-container {
@@ -417,14 +425,13 @@ border: solid rgba(62, 90, 98, 0.631); */
   padding: 4px 20px;
   font-size: 15px;
   /* border: solid #cac7ff; */
-  color: black;
+  color: white;
   /* background-color: transparent; */
 
 }
 
 .search-bar button img{
   width: 23px;
-
 }
 
 .search-bar button{
@@ -495,6 +502,8 @@ footer {
 
   align-items: flex-start;
   justify-content: space-between ;
+  box-shadow: 5px 0 5px 2px #888888;
+
 }
 .footer-bottom-last-item{
   /* display: flex; */

@@ -15,7 +15,6 @@ router.get('/:id', booksCtrl.show)
 router.post('/', ensureLoggedIn, booksCtrl.create)
 
 
-
 // GET	/posts	Read all posts	index	to show all books in book/index pg
 router.get('/', booksCtrl.index)
 
