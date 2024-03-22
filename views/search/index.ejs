@@ -14,8 +14,9 @@
 
             <% if (userData) { %> 
               <% userData.items.forEach(function(book) { %>
-            
-                <% if (book.volumeInfo.imageLinks.thumbnail) { %>
+                <% if (!book.volumeInfo.imageLinks.thumbnail) { %>
+                  <% res.redirect('/books/errormsg') %>
+                <% } else { %>
                   <li class="glide__slide">
                     <div class="img-container">
                     <img name="thumbnail" class="index-thumbnail" src="<%= book.volumeInfo.imageLinks.thumbnail %>" width="100">

@@ -7,8 +7,6 @@ module.exports = {
     index
 }
 
-
-
 function index(req, res, next) {
     const bookTitle = req.query.title
     console.log (`title: ${bookTitle}`)
