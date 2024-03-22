@@ -14,8 +14,12 @@
 
             <% if (userData) { %> 
               <% userData.items.forEach(function(book) { %>
-                <% if (!book.volumeInfo.imageLinks.thumbnail) { %>
-                  <% res.redirect('/books/errormsg') %>
+                <% if (!book.volumeInfo.imageLinks || !book.volumeInfo.imageLinks.thumbnail) { %>
+
+                  <script>
+                    window.location.href = 'http://localhost:3000/';
+                  </script>
+                  
                 <% } else { %>
                   <li class="glide__slide">
                     <div class="img-container">
