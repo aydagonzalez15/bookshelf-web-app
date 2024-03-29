@@ -26,12 +26,14 @@ Enjoy the Libros App!
 - Git
 - Github
 - Embedded JavaScript
-- Visual Studios Code
+- Visual Studios Code'
+- Google Books API
+- Google OAuth
 
 
 # Getting Started
 
-[Click to visit the Libros Web App!](https://libros-web-app-1a7fcdf983a2.herokuapp.com/books)
+[Click to visit the Libros Web App!](https://libros-web-app-e2ea9ebfcbfc.herokuapp.com/books)
 
 # Next Steps
 
